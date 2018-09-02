@@ -11,7 +11,29 @@ class App extends Component {
       { id: 0, text: ' 리액트 소개', checked: false },
       { id: 1, text: ' 리액트 소개', checked: true },
       { id: 2, text: ' 리액트 소개', checked: false }
-    ]
+    ],
+    time: []
+  }
+  componentWillMount() {
+    this._getTime();
+  }
+  componentDidMount() {
+    setInterval(this._getTime, 1000)
+  }
+  _getTime = () => {
+    let date = new Date();
+    let hour = date.getHours();
+    let minute = date.getMinutes();
+    let second  = date.getSeconds();
+    let ap = '';
+    if (hour >= 12) {
+      ap = '오후'
+    } else {
+      ap = '오전'
+    }
+    this.setState({
+      time: [hour, minute, ap, second]
+    })
   }
   handleChange = (e) => {
     this.setState({
@@ -58,7 +80,7 @@ class App extends Component {
     })
   }
   render() {
-    const { input, todos } = this.state;
+    const { input, todos, time } = this.state;
     const { handleChange, handleCreate, handleKeyPress, handleToggle, handleRemove } = this;
     return (
       <TodoListTemplate form={(
@@ -67,7 +89,7 @@ class App extends Component {
           onKeyPress={handleKeyPress} 
           onChange={handleChange}
           onCreate={handleCreate}
-      />)}>
+      />)} time={time}>
         <TodoItemList todos={todos} onToggle={handleToggle} onRemove={handleRemove}/>
         {/* <TodoItemList />는 this.props.children으로 전달됨 */}
       </TodoListTemplate>
