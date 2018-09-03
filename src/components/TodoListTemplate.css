@@ -1,6 +1,6 @@
 .todo-list-template {
   background: linear-gradient(to right, #9CCDAA, #FBE0A4);
-  width: 512px;
+  width: 500px;
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23); /* 그림자 */ 
   margin: 0 auto; /* 페이지 중앙 정렬 */
   margin-top: 4rem;
@@ -46,4 +46,9 @@
 }
 .todos-wrapper {
   min-height: 5rem;
+}
+@media screen and (max-width:500px) {
+  .todo-list-template {
+    width: auto;
+  }
 }

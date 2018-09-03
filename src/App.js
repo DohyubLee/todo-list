@@ -28,6 +28,7 @@ class App extends Component {
     let ap = '';
     if (hour >= 12) {
       ap = '오후'
+      hour = hour - 12;
     } else {
       ap = '오전'
     }

@@ -2,7 +2,6 @@ import React from 'react';
 import './TodoListTemplate.css'
 
 const TodoListTemplate = ({time, form, children}) => {
-    console.log(time);
     return (
         <main className="todo-list-template">
             <div className="title">
